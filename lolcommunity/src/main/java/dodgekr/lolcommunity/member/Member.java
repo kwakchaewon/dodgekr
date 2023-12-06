@@ -30,11 +30,11 @@ public class Member {
     @Column(nullable = true)
     private LocalDateTime last_login;
 
-    // 0: 관리자, 1: 일반 유저
-    private byte is_superuser;
+    // true: 관리자, false: 일반 유저
+    private boolean is_superuser;
 
-    // 0: 휴면 계정, 1: 일반 계정
-    private byte is_active;
+    // true: 일반 계정, false: 휴면 계정
+    private boolean is_active;
 
     @Column(nullable = true)
     private String riot_id;

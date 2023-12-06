@@ -19,11 +19,10 @@ public class MemberService {
         member.setPassword(passwordEncoder.encode(password));
         member.setEmail(email);
         member.setDate_joined(LocalDateTime.now());
-        member.setIs_superuser((byte) 1);
-        member.setIs_active((byte) 1);
+        member.set_superuser(false);
+        member.set_active(true);
 
         this.memberRepository.save(member);
         return member;
     }
-
 }
