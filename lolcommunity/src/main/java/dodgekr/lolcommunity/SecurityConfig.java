@@ -20,15 +20,16 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
                         .requestMatchers(new AntPathRequestMatcher("/**")).permitAll())
 
-//                // 2. 스프링 시큐리티가 CSRF 처리시 H2 콘솔은 예외로 처리
-//                .csrf((csrf) -> csrf
-//                        .ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
-//
-//                // 3. 사이트의 콘텐츠가 다른 사이트에 포함되지 않도록 하기 위해 X-Frame-Options 헤더값을 사용해 방지
-//                // X-Frame-Options 헤더값을 sameorigin으로 설정 -> frame에 포함된 페이지가 페이지를 제공하는 사이트와 동일한 경우 사용 가능
-//                .headers((headers) -> headers
-//                        .addHeaderWriter(new XFrameOptionsHeaderWriter(
-//                                XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
+                // 2. formLogin 메서드: 로그인 설정 담당.
+                .formLogin((formLogin) -> formLogin
+                        .loginPage("/user/login") // 로그인 폼
+                        .defaultSuccessUrl("/")) // 로그인 성공 후 URL
+
+                // 3. logout 메서드: 로그아웃 설정
+                .logout((logout) -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))  // 로그아웃 URL
+                        .logoutSuccessUrl("/") // 로그아웃 후 URL
+                        .invalidateHttpSession(true)) // 세션 초기화
         ;
         return http.build();
     }
