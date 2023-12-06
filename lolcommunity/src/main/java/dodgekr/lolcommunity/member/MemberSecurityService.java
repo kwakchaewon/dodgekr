@@ -20,7 +20,7 @@ public class MemberSecurityService implements UserDetailsService {
     private final MemberRepository memberRepository;
 
     /**
-     * 비밀번호 조회 후 리턴
+     * 로그인 (User 권한 부여)
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
