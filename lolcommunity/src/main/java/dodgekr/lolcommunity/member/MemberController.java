@@ -73,26 +73,4 @@ public class MemberController {
         model.addAttribute("exception", exception);
         return "login_form";
     }
-
-//    @PostMapping("/login")
-//    public String loginerror(@Valid LoginForm loginForm, BindingResult bindingResult){
-//
-//        // 1. 에러가 있을 경우 다시 폼 작성
-//        if (bindingResult.hasErrors()) {
-//            return "signup_form";
-//        }
-//
-//        // 2. ID, 비밀번호 검증
-//        try {
-//            this.memberService.getMemberLoginCheck(loginForm.getUsername(),loginForm.getPassword());
-//        }catch (UsernameNotFoundException e){
-//            e.printStackTrace();
-//            bindingResult.reject("signinFailed", "아이디 또는 비밀번호를 잘못 입력했습니다.");
-//            return "signup_form";
-//        }catch (Exception e){
-//            e.printStackTrace();
-//            bindingResult.reject("signupFailed", e.getMessage());
-//        }
-//        return "login_form";
-//    }
 }
