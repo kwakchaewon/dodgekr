@@ -4,11 +4,14 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RequestMapping("/member")
 @Controller
@@ -63,8 +66,33 @@ public class MemberController {
      * 로그인 폼
      */
     @GetMapping("/login")
-    public String login(){
+    public String login(@RequestParam(value = "error", required = false)String error,
+                        @RequestParam(value = "exception", required = false)String exception,
+                        Model model){
+        model.addAttribute("error", error);
+        model.addAttribute("exception", exception);
         return "login_form";
     }
 
+//    @PostMapping("/login")
+//    public String loginerror(@Valid LoginForm loginForm, BindingResult bindingResult){
+//
+//        // 1. 에러가 있을 경우 다시 폼 작성
+//        if (bindingResult.hasErrors()) {
+//            return "signup_form";
+//        }
+//
+//        // 2. ID, 비밀번호 검증
+//        try {
+//            this.memberService.getMemberLoginCheck(loginForm.getUsername(),loginForm.getPassword());
+//        }catch (UsernameNotFoundException e){
+//            e.printStackTrace();
+//            bindingResult.reject("signinFailed", "아이디 또는 비밀번호를 잘못 입력했습니다.");
+//            return "signup_form";
+//        }catch (Exception e){
+//            e.printStackTrace();
+//            bindingResult.reject("signupFailed", e.getMessage());
+//        }
+//        return "login_form";
+//    }
 }
