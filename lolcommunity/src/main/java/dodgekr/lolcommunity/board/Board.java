@@ -31,5 +31,5 @@ public class Board {
     private List<Comment> commentList;
 
     @ManyToOne
-    private Member member;
+    private Member author;
 }

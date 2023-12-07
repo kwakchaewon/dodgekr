@@ -1,5 +1,6 @@
 package dodgekr.lolcommunity.member;
 
+import dodgekr.lolcommunity.board.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,6 +36,18 @@ public class MemberService {
         // 2. 없다면 Exception 리턴
         if(_member.isEmpty()){
             throw new UsernameNotFoundException("사용자를 찾을 수 없습니다.");
+        }
+    }
+
+    /**
+     * username 으로 member 조회
+     */
+    public Member getMember(String username){
+        Optional<Member> _member = this.memberRepository.findByUsername(username);
+        if (_member.isPresent()) {
+            return _member.get();
+        } else {
+            throw new DataNotFoundException("member is not found");
         }
     }
 
