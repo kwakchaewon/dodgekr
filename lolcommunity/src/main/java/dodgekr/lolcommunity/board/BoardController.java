@@ -33,9 +33,9 @@ public class BoardController {
     /**
      *  게시글 등록완료
      */
-    @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
-    public String questionCreate(@Valid BoardForm boardForm, BindingResult bindingResult, Principal principal){
+    @PreAuthorize("isAuthenticated()")
+    public String createBoard(@Valid BoardForm boardForm, BindingResult bindingResult, Principal principal){
 
         // 1. 에러가 있을 경우 다시 폼 작성
         if (bindingResult.hasErrors()) {
@@ -48,4 +48,11 @@ public class BoardController {
         return "redirect:/";
         // return "redirect:/board/list";
     }
+
+    /**
+     *  게시글 전체 조회
+     */
+
+
+
 }
