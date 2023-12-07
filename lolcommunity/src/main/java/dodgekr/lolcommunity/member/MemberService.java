@@ -1,11 +1,13 @@
 package dodgekr.lolcommunity.member;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,4 +27,15 @@ public class MemberService {
         this.memberRepository.save(member);
         return member;
     }
+
+    public void getMemberLoginCheck(String username, String password){
+        // 1. username, password 로 멤버 리턴
+        Optional<Member> _member = this.memberRepository.findByUsernameAndPassword(username, passwordEncoder.encode(password));
+
+        // 2. 없다면 Exception 리턴
+        if(_member.isEmpty()){
+            throw new UsernameNotFoundException("사용자를 찾을 수 없습니다.");
+        }
+    }
+
 }
