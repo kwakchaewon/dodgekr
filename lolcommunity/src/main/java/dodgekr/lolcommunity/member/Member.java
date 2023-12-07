@@ -24,20 +24,20 @@ public class Member {
     private String email;
 
     @Column(nullable = true)
-    private String profile_img;
+    private String profileImg;
 
     @Column(nullable = false)
-    private LocalDateTime date_joined;
+    private LocalDateTime dateJoined;
 
-    private LocalDateTime last_login;
+    private LocalDateTime lastLogin;
 
     // true: 관리자, false: 일반 유저
     @Column(nullable = false)
-    private boolean is_superuser;
+    private boolean isSuperuser;
 
     // true: 일반 계정, false: 휴면 계정
     @Column(nullable = false)
-    private boolean is_active;
+    private boolean isActive;
 
-    private String riot_id;
+    private String riotId;
 }

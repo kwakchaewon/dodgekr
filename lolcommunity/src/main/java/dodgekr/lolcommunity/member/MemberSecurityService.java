@@ -37,7 +37,7 @@ public class MemberSecurityService implements UserDetailsService {
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         // 3. Is_superuser 가 true면 ADMIN 권한 부여, 이외에는 USER 권한 부여
-        if (member.is_superuser()==true){
+        if (member.isSuperuser()==true){
             authorities.add(new SimpleGrantedAuthority(MemberRole.ADMIN.getValue()));
         } else {
             authorities.add(new SimpleGrantedAuthority(MemberRole.USER.getValue()));

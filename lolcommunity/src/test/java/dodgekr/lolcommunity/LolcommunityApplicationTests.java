@@ -43,9 +43,9 @@ class LolcommunityApplicationTests {
 		member.setUsername("admin");
 		member.setPassword(passwordEncoder.encode("admin"));
 		member.setEmail("admin@naver.com");
-		member.setDate_joined(LocalDateTime.now());
-		member.set_superuser(true);
-		member.set_active(true);
+		member.setDateJoined(LocalDateTime.now());
+		member.setSuperuser(true);
+		member.setActive(true);
 		memberRepository.save(member);
 	}
 

@@ -20,9 +20,9 @@ public class Comment {
     private String content;
 
     @Column(nullable = false)
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
 
-    private LocalDateTime updated_at;
+    private LocalDateTime updatedAt;
 
     @ManyToOne
     private Board board;
@@ -30,5 +30,5 @@ public class Comment {
     @ManyToOne
     private Member member;
 
-    private Long refer_reply_id;
+    private Long referReplyId;
 }

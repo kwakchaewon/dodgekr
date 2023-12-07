@@ -21,9 +21,9 @@ public class MemberService {
         member.setUsername(username);
         member.setPassword(passwordEncoder.encode(password));
         member.setEmail(email);
-        member.setDate_joined(LocalDateTime.now());
-        member.set_superuser(false);
-        member.set_active(true);
+        member.setDateJoined(LocalDateTime.now());
+        member.setSuperuser(false);
+        member.setActive(true);
 
         this.memberRepository.save(member);
         return member;
