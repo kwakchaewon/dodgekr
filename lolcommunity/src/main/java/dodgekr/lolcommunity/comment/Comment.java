@@ -1,7 +1,7 @@
 package dodgekr.lolcommunity.comment;
 
 import dodgekr.lolcommunity.member.Member;
-import dodgekr.lolcommunity.post.Post;
+import dodgekr.lolcommunity.board.Board;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +25,7 @@ public class Comment {
     private LocalDateTime updated_at;
 
     @ManyToOne
-    private Post post;
+    private Board board;
 
     @ManyToOne
     private Member member;
