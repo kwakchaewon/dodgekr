@@ -9,10 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -45,7 +42,7 @@ public class BoardController {
             return "board_form";
         }
 
-        //2. 에러가 없다면 질문 등록
+        //2. 에러가 없다면 게시글 등록
         Member member = memberService.getMember(principal.getName());
         this.boardService.create(boardForm.getTitle(), boardForm.getContent(), member);
         return "redirect:/board/list";
@@ -59,5 +56,15 @@ public class BoardController {
         Page<Board> paging = this.boardService.getBoardList(page-1);
         model.addAttribute("paging", paging);
         return "board_list";
+    }
+
+    /**
+     * 게시글 상세
+     */
+    @GetMapping("/detail/{id}")
+    public String detail(Model model, @PathVariable("id") Integer id, BoardForm boardForm){
+        Board board = boardService.getBoard(id);
+        model.addAttribute("board",board);
+        return "board_detail";
     }
 }

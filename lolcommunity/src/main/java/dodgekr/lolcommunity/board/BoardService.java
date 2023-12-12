@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -34,4 +35,15 @@ public class BoardService {
         Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
         return this.boardRepository.findAll(pageable);
     }
+
+    public Board getBoard(Integer id){
+        Optional<Board> board = this.boardRepository.findById(id);
+
+        if (board.isPresent()) {
+            return board.get();
+        } else {
+            throw new DataNotFoundException("board not found");
+        }
+    }
+    
 }
