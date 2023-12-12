@@ -58,10 +58,10 @@ class LolcommunityApplicationTests {
 	}
 
 	/**
-	 *  Question 테이블 테스트 데이터 생성
+	 *  Board 테이블 테스트 데이터 생성
 	 */
 	@Test
-	void createQuestion(){
+	void createBoard(){
 		for(int i = 1; i<=300; i++){
 			String subject = String.format("테스트 데이터: [%03d]",i);
 			String content = String.format("[%03d]번째 게시글",i);

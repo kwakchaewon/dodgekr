@@ -47,7 +47,6 @@
                    class="delete btn btn-sm btn-outline-secondary" sec:authorize="isAuthenticated()"
                    th:if="${board.author != null and #authentication.getPrincipal().getUsername() == board.author.username}"
                    th:text="삭제"></a>
-<!--                th:onclick="|javascript:confirmDelete('${board.id}')|"-->
             </div>
         </div>
     </div>
