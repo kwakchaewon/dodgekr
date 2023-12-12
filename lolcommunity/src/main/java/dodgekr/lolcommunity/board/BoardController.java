@@ -85,7 +85,7 @@ public class BoardController {
         }
 
         this.boardService.delete(question);
-        return "redirect:/";
+        return "redirect:/board/list";
     }
 
     /**
