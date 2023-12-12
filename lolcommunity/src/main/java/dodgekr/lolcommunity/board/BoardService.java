@@ -50,4 +50,11 @@ public class BoardService {
         this.boardRepository.delete(question);
     }
 
+    public void update(Board question,String title, String content){
+        question.setTitle(title);
+        question.setContent(content);
+        question.setUpdatedAt(LocalDateTime.now());
+        this.boardRepository.save(question);
+    }
+
 }

@@ -88,4 +88,41 @@ public class BoardController {
         return "redirect:/";
     }
 
+    /**
+     *  게시글 수정폼
+     */
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/update/{id}")
+    public String updateBoard(BoardForm boardForm, @PathVariable("id") Integer id, Principal principal){
+
+        Board board = boardService.getBoard(id);
+        if(!board.getAuthor().getUsername().equals(principal.getName())){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
+        }
+        boardForm.setTitle(board.getTitle());
+        boardForm.setContent(board.getContent());
+        return "board_form";
+    }
+
+    /**
+     * 게시글 수정
+     */
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/update/{id}")
+    public String updateBoard(@Valid BoardForm boardForm, BindingResult bindingResult,
+                                 Principal principal, @PathVariable("id") Integer id){
+        if (bindingResult.hasErrors()) {
+            return "board_form";
+        }
+
+        Board board = this.boardService.getBoard(id);
+
+        // 프론트 단에서 검증됐더라도 백앤드 단에서도 검증 단계가 있는 것이 좋음
+        if (!board.getAuthor().getUsername().equals(principal.getName())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
+        }
+
+        this.boardService.update(board,boardForm.getTitle(),boardForm.getContent());
+        return "redirect:/board/detail/{id}";
+    }
 }
