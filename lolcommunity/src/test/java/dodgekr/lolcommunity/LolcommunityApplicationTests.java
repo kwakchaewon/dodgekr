@@ -1,5 +1,7 @@
 package dodgekr.lolcommunity;
 
+import dodgekr.lolcommunity.board.BoardRepository;
+import dodgekr.lolcommunity.board.BoardService;
 import dodgekr.lolcommunity.member.Member;
 import dodgekr.lolcommunity.member.MemberRepository;
 import dodgekr.lolcommunity.member.MemberService;
@@ -24,7 +26,13 @@ class LolcommunityApplicationTests {
 	private MemberRepository memberRepository;
 
 	@Autowired
+	private BoardRepository boardRepository;
+
+	@Autowired
 	private MemberService memberService;
+
+	@Autowired
+	private BoardService boardService;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -47,6 +55,18 @@ class LolcommunityApplicationTests {
 		member.setSuperuser(true);
 		member.setActive(true);
 		memberRepository.save(member);
+	}
+
+	/**
+	 *  Question 테이블 테스트 데이터 생성
+	 */
+	@Test
+	void createQuestion(){
+		for(int i = 1; i<=300; i++){
+			String subject = String.format("테스트 데이터: [%03d]",i);
+			String content = String.format("[%03d]번째 게시글",i);
+			this.boardService.create(subject,content, null);
+		}
 	}
 
 }
