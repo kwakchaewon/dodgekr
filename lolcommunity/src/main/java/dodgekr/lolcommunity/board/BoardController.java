@@ -5,11 +5,13 @@ import dodgekr.lolcommunity.member.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
 
@@ -52,7 +54,7 @@ public class BoardController {
      *  게시글 전체 조회 (페이지네이션 적용)
      */
     @GetMapping("/list")
-    public String list(Model model, @RequestParam(value="page", defaultValue="1") int page) {
+    public String listBoard(Model model, @RequestParam(value="page", defaultValue="1") int page) {
         Page<Board> paging = this.boardService.getBoardList(page-1);
         model.addAttribute("paging", paging);
         return "board_list";
@@ -62,9 +64,28 @@ public class BoardController {
      * 게시글 상세
      */
     @GetMapping("/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Integer id, BoardForm boardForm){
+    public String detailBoard(Model model, @PathVariable("id") Integer id, BoardForm boardForm){
         Board board = boardService.getBoard(id);
         model.addAttribute("board",board);
         return "board_detail";
     }
+
+    /**
+     * 게시글 삭제
+     */
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/delete/{id}")
+    public String deleteBoard(@PathVariable("id") Integer id, Principal principal){
+
+        Board question = this.boardService.getBoard(id);
+
+        // 프론트 단에서 검증됐더라도 백앤드 단에서도 검증 단계가 있는 것이 좋음
+        if (!question.getAuthor().getUsername().equals(principal.getName())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제권한이 없습니다.");
+        }
+
+        this.boardService.delete(question);
+        return "redirect:/";
+    }
+
 }

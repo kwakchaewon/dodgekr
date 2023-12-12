@@ -45,5 +45,9 @@ public class BoardService {
             throw new DataNotFoundException("board not found");
         }
     }
-    
+
+    public void delete(Board question){
+        this.boardRepository.delete(question);
+    }
+
 }
