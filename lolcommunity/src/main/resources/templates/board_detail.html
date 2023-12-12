@@ -14,17 +14,11 @@
         });
     });
 
-<!--function confirmDelete() {-->
-<!--  // 확인 창을 띄우고 사용자가 확인 또는 취소할 수 있도록 합니다.-->
-<!--  var result = confirm("정말로 삭제하시겠습니까?");-->
-
-<!--  // 사용자가 확인을 눌렀을 때의 동작-->
-<!--  if (result) {-->
-<!--    // 여기에 삭제할 때 실행할 코드를 넣어주세요-->
-<!--    alert("삭제되었습니다."); // 예시로 경고창을 띄우는 코드-->
-<!--  } else {-->
-<!--    // 사용자가 취소를 눌렀을 때의 동작-->
-<!--    alert("삭제가 취소되었습니다.");-->
+<!--function confirmDelete(boardId) {-->
+<!--    var result = confirm("정말로 삭제하시겠습니까?");-->
+<!--      if (result) {-->
+<!--        var deleteUrl = '/board/delete/id?' + boardId;-->
+<!--        window.location.href = deleteUrl;-->
 <!--  }-->
 <!--}-->
 
@@ -49,15 +43,16 @@
                    sec:authorize="isAuthenticated()"
                    th:if="${board.author != null and #authentication.getPrincipal().getUsername() == board.author.username}"
                    th:text="수정"></a>
-                <a href="javascript:void(0);" th:data-uri="@{|/board/delete/${board.id}|}"
+                <a th:data-uri="@{|/board/delete/${board.id}|}"
                    class="delete btn btn-sm btn-outline-secondary" sec:authorize="isAuthenticated()"
                    th:if="${board.author != null and #authentication.getPrincipal().getUsername() == board.author.username}"
                    th:text="삭제"></a>
+<!--                th:onclick="|javascript:confirmDelete('${board.id}')|"-->
             </div>
         </div>
     </div>
     <!-- 댓글 갯수 표시 -->
-    <h5 class="border-bottom my-3 py-2"
+    <h5 class="border-bottom my-3 py-2"`
         th:text="|${#lists.size(board.commentList)}개의 댓글이 있습니다.|"></h5>
     <!-- 댓글 반복 시작 -->
     <div class="card my-3" th:each="comment : ${board.commentList}">
@@ -76,7 +71,7 @@
                    sec:authorize="isAuthenticated()"
                    th:if="${comment.author != null and #authentication.getPrincipal().getUsername() == comment.author.username}"
                    th:text="수정"></a>
-                <a th:href="javascript:void(0);" th:data-uri="@{|/comment/delete/${comment.id}|}"
+                <a th:data-uri="@{|/comment/delete/${comment.id}|}"
                    class="delete btn btn-sm btn-outline-secondary" sec:authorize="isAuthenticated()"
                    th:if="${comment.author != null and #authentication.getPrincipal().getUsername() == comment.author.username}"
                    th:text="삭제"></a>
