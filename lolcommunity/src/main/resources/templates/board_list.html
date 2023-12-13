@@ -3,6 +3,12 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
+
+<script layout:fragment="script" type='text/javascript'>
+    function createFailed(){
+        alert("로그인이 필요한 기능입니다.");
+    }
+</script>
 <div layout:fragment="content" class="container my-3">
     <table class="table">
         <thead class="table-dark">
@@ -68,6 +74,7 @@
         </ul>
     </div>
     <!-- 페이징처리 끝 -->
-    <a th:href="@{/board/create}" class="btn btn-primary">게시글 등록</a>
+    <a sec:authorize="isAuthenticated()" th:href="@{/board/create}" class="btn btn-primary">게시글 등록</a>
+    <span sec:authorize="isAnonymous()" th:onclick="createFailed()" class="btn btn-primary">게시글 등록</span>
 </div>
 </html>
