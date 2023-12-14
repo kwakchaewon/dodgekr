@@ -5,9 +5,7 @@
       layout:decorate="~{layout}">
 
 <script layout:fragment="script" type='text/javascript'>
-    function createFailed(){
-        alert("로그인이 필요한 기능입니다.");
-    }
+
 </script>
 <div layout:fragment="content" class="container my-3">
     <table class="table">
@@ -81,7 +79,7 @@
     <div class="row my-3">
         <div class="col-6">
             <a sec:authorize="isAuthenticated()" th:href="@{/board/create}" class="btn btn-primary">게시글 등록</a>
-            <span sec:authorize="isAnonymous()" th:onclick="createFailed()" class="btn btn-primary">게시글 등록</span>
+            <span id="createFailBtn" sec:authorize="isAnonymous()" href="javascript:void(0)" class="btn btn-primary">게시글 등록</span>
         </div>
         <div class="col-6">
             <div class="input-group">
@@ -105,5 +103,15 @@
         document.getElementById('page').value = 1;  // 검색버튼을 클릭할 경우 1페이지부터 조회
         document.getElementById('searchForm').submit();
     });
+
+
+    const createFailBtn = document.getElementById("createFailBtn");
+    createFailBtn.addEventListener('click', function() {
+    alert("로그인이 필요한 기능입니다.");
+    });
+
+<!--    function createFailed(){-->
+<!--        alert("로그인이 필요한 기능입니다.");-->
+<!--    }-->
 </script>
 </html>
