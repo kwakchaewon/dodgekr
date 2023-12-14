@@ -54,9 +54,11 @@ public class BoardController {
      *  게시글 전체 조회 (페이지네이션 적용)
      */
     @GetMapping("/list")
-    public String listBoard(Model model, @RequestParam(value="page", defaultValue="1") int page) {
-        Page<Board> paging = this.boardService.getBoardList(page-1);
+    public String listBoard(Model model, @RequestParam(value="page", defaultValue="1") int page,
+                            @RequestParam(value = "keyword", defaultValue = "") String keyword) {
+        Page<Board> paging = this.boardService.getBoardList(page-1, keyword);
         model.addAttribute("paging", paging);
+        model.addAttribute("keyword", keyword);
         return "board_list";
     }
 
