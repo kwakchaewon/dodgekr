@@ -51,7 +51,7 @@ public class BoardController {
     }
 
     /**
-     *  게시글 전체 조회 (페이지네이션 적용)
+     *  게시글 전체 조회 (검색어, 페이지네이션 적용)
      */
     @GetMapping("/list")
     public String listBoard(Model model, @RequestParam(value="page", defaultValue="1") int page,
