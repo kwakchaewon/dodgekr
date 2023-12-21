@@ -71,6 +71,8 @@
         </ul>
     </div>
     <!-- 페이징처리 끝 -->
+
+    <!-- 검색폼 -->
     <form th:action="@{/board/list}" method="get" id="searchForm">
         <input type="hidden" id="keyword" name="keyword" th:value="${keyword}">
         <input type="hidden" id="page" name="page" th:value="${paging.number}">
@@ -104,14 +106,9 @@
         document.getElementById('searchForm').submit();
     });
 
-
     const createFailBtn = document.getElementById("createFailBtn");
     createFailBtn.addEventListener('click', function() {
     alert("로그인이 필요한 기능입니다.");
     });
-
-<!--    function createFailed(){-->
-<!--        alert("로그인이 필요한 기능입니다.");-->
-<!--    }-->
 </script>
 </html>
