@@ -11,7 +11,6 @@ import java.util.List;
 public interface BoardRepository extends JpaRepository<Board,Integer> {
     Page<Board> findAll(Pageable pageable);
     Page<Board> findAll(Specification<Board> spec, Pageable pageable);
-
 }
 
 
