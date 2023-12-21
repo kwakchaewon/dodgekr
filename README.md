@@ -12,7 +12,6 @@ Riot API 기반 전적 검색, 커뮤니티 등의 기능을 제공합니다.<br
 ### **Infra (~ing)**
 - Server: AWS EC2
 - DB: AWS RDS (MYSQL)
-<br/>
 
 <!--
 ## 🖥 산출물 (~ing)
