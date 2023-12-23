@@ -21,7 +21,7 @@ Riot API 기반 전적 검색, 커뮤니티 등의 기능을 제공합니다.<br
 -->
 <br/>
 
-## ✍️ 상세 개발 과정
+## ✍️ 상세 개발 과정 (~ing)
 
 ### ⏲️ [전체 프로젝트 관리](https://little-bit-cf9.notion.site/49c263a8a1394ccc809d4fc577e56a3a?v=c39512296c424cb2850246f94c3ddacd&pvs=4)
 ### ✅ 1. 프로젝트 설계
@@ -44,7 +44,7 @@ Riot API 기반 전적 검색, 커뮤니티 등의 기능을 제공합니다.<br
 - [게시글 수정](https://www.notion.so/5-159cf62dbce54dc1bdcbd83ee9c4e066?pvs=4)
 - [게시글 검색](https://little-bit-cf9.notion.site/6-127f00c6ee084c9696e0b8af8b368e98?pvs=4)
 ### ✅ 5. 전적검색 개발
-
+- [소환사 검색 (~ing)]()
 
 ### ✅ 6. 배포
 - [스프링부트 jar 배포 (EC2, RDS)](https://ksh03003.tistory.com/86)
