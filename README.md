@@ -9,7 +9,7 @@ Riot API 기반 전적 검색, 커뮤니티 등의 기능을 제공합니다.<br
 ### **Backend**
 - Java, Spring boot, Spring security
 
-### **Infra (~ing)**
+### **Infra**
 - Server: AWS EC2
 - DB: AWS RDS (MYSQL)
 
