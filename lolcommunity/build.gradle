@@ -31,8 +31,9 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	// MYSQL 의존성
-	implementation 'mysql:mysql-connector-java'
+//	implementation 'mysql:mysql-connector-java'
 	runtimeOnly 'com.mysql:mysql-connector-j'
+//	runtimeOnly 'mysql:mysql-connector-java'
 
 	// 스프링 시큐리티 의존성
 	implementation 'org.springframework.boot:spring-boot-starter-security'
