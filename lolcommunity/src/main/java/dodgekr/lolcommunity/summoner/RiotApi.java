@@ -48,17 +48,11 @@ public class RiotApi {
         return restTemplate.exchange(RiotUri_getSummoner, HttpMethod.GET, entity, SummonerDTO.class, summonerName).getBody();
     }
 
-    @SneakyThrows
     public LeagueEntryDTO[] getLeagueEntries(String encryptedSummonerId) {
         final HttpHeaders headers = new HttpHeaders();
         headers.set("X-Riot-Token", riotApiConfig.getRIOT_API_KEY());
         final HttpEntity<String> entity = new HttpEntity<>(headers);
-
         return restTemplate.exchange(RiotUri_getLeagueEntries, HttpMethod.GET, entity, LeagueEntryDTO[].class, encryptedSummonerId).getBody();
-//        String jsonString = restTemplate.exchange(RiotUri_getLeagueEntries, HttpMethod.GET, entity, String.class, encryptedSummonerId).getBody();
-//        ObjectMapper objectMapper = new ObjectMapper();
-
-//        return objectMapper.readValue(jsonString, LeagueEntryDTO[].class);
     }
 
 }
