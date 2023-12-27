@@ -54,11 +54,11 @@ public class RiotApi {
         headers.set("X-Riot-Token", riotApiConfig.getRIOT_API_KEY());
         final HttpEntity<String> entity = new HttpEntity<>(headers);
 
-//        return restTemplate.exchange(RiotUri_getLeagueEntries, HttpMethod.GET, entity, LeagueEntryDTO.class, encryptedSummonerId).getBody();
-        String jsonString = restTemplate.exchange(RiotUri_getLeagueEntries, HttpMethod.GET, entity, String.class, encryptedSummonerId).getBody();
-        ObjectMapper objectMapper = new ObjectMapper();
+        return restTemplate.exchange(RiotUri_getLeagueEntries, HttpMethod.GET, entity, LeagueEntryDTO[].class, encryptedSummonerId).getBody();
+//        String jsonString = restTemplate.exchange(RiotUri_getLeagueEntries, HttpMethod.GET, entity, String.class, encryptedSummonerId).getBody();
+//        ObjectMapper objectMapper = new ObjectMapper();
 
-        return objectMapper.readValue(jsonString, LeagueEntryDTO[].class);
+//        return objectMapper.readValue(jsonString, LeagueEntryDTO[].class);
     }
 
 }
