@@ -47,7 +47,7 @@ public class SummonerController {
     @RequestMapping(value = "/summoner/{summonerName}", method = RequestMethod.GET)
     public String searchSummoner(Model model, @PathVariable String summonerName){
 
-        SummonerDTO summonerDTO = summonerService.findBySummoner(summonerName);
+        SummonerDTO summonerDTO = summonerService.findSummoner(summonerName);
 
         model.addAttribute("summonerInfo", summonerDTO);
         model.addAttribute("profileUrl", "http://ddragon.leagueoflegends.com/cdn/13.24.1/img/profileicon/"+ summonerDTO.getProfileIconId() + ".png");
