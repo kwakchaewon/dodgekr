@@ -23,7 +23,7 @@ public class SummonerController {
 
         model.addAttribute("summonerInfo", summonerDTO);
         model.addAttribute("profileUrl", "http://ddragon.leagueoflegends.com/cdn/13.24.1/img/profileicon/"+ summonerDTO.getProfileIconId() + ".png");
-        model.addAttribute("entryInfo", leagueEntryDTO);
+        model.addAttribute("entryInfo", leagueEntryDTO[0]);
 
         return "summoner_detail";
     }
