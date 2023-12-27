@@ -36,5 +36,7 @@ out/
 ### VS Code ###
 .vscode/
 
-### DB 정보
+### DB 정보, riot api key
 application-db.properties
+application-riotapi.properties
+
