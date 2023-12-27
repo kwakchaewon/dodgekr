@@ -25,16 +25,4 @@ public class LeagueEntryDTO {
         private boolean freshBlood;
         private boolean inactive;
 
-//        private MiniSeriesDTO miniSeries;
-
-
-//
-//
-//    @Data
-//    public class MiniSeriesDTO{
-//        private int losses;
-//        private int target;
-//        private int wins;
-//        private String progress;
-//    }
 }
