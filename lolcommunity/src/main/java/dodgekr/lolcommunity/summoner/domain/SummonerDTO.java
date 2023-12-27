@@ -1,13 +1,9 @@
-package dodgekr.lolcommunity.summoner;
+package dodgekr.lolcommunity.summoner.domain;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Date;
 
 @Data
-public class Summoner {
+public class SummonerDTO {
         private String id;
         private String accountId;
         private String puuid;
