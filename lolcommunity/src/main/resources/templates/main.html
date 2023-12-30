@@ -6,7 +6,7 @@
 <div layout:fragment="content" class="container my-3" style="text-align:center;">
         <img src="/image/logo/mainlogo.png" style="width:30%;">
     <div class="input-group" style="width:50%; margin: 0 auto; ">
-        <input type="text" id="summoner_keyword" class="form-control" placeholder="소환사를 검색하세요!" th:value="${keyword}">
+        <input onkeyup="searchByEnter()" type="text" id="summoner_keyword" class="form-control" placeholder="소환사를 검색하세요!" th:value="${keyword}">
         <button onclick="searchSummoner()" class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
     </div>
 </div>
@@ -18,6 +18,17 @@
             } else {
                 alert("소환사명을 입력하세요!");
             }
+    }
+
+    function searchByEnter(){
+        if (window.event.keyCode == 13){
+            var value = document.getElementById('summoner_keyword').value;
+            if (value) {
+                window.location.href = "/summoner/" + value;
+            } else {
+                alert("소환사명을 입력하세요!");
+            }
+        }
     }
 </script>
 </html>
