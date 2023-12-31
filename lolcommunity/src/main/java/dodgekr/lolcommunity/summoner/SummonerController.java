@@ -20,10 +20,16 @@ public class SummonerController {
 
         SummonerDTO summonerDTO = summonerService.findSummoner(summonerName);
         LeagueEntryDTO[] leagueEntryDTO = summonerService.findLeagueEntry(summonerDTO.getId());
+        String[] matchList = summonerService.findMatch(summonerDTO.getPuuid());
 
         model.addAttribute("summonerInfo", summonerDTO);
         model.addAttribute("profileUrl", "http://ddragon.leagueoflegends.com/cdn/13.24.1/img/profileicon/"+ summonerDTO.getProfileIconId() + ".png");
         model.addAttribute("entryInfo", leagueEntryDTO[0]);
+//        model.addAttribute("matchList", matchList);
+
+        System.out.println("summonerDTO = " + summonerDTO);
+        System.out.println("leagueEntryDTO = " + leagueEntryDTO);
+        System.out.println("matchList = " + matchList[0]);
 
         return "summoner_detail";
     }

@@ -27,4 +27,10 @@ public class SummonerService {
         return riotApi.getLeagueEntries(encryptedSummonerId);
     }
 
+    @Transactional(readOnly = true)
+    public String[] findMatch(String puuid){
+        return riotApi.getMatchList(puuid);
+    }
+
+
 }

@@ -33,7 +33,8 @@ public class RiotApi {
     private final RiotApiConfig riotApiConfig;
     private final String RiotUri_getSummoner = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonerName}";
     private final String RiotUri_getLeagueEntries = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/{encryptedSummonerId}";
-//    private final String RiotUri_getLeagueEntries = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/";
+    private final String RiotUri_getMatchList = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?start=0&count=5";
+
 
 
     /**
@@ -53,6 +54,13 @@ public class RiotApi {
         headers.set("X-Riot-Token", riotApiConfig.getRIOT_API_KEY());
         final HttpEntity<String> entity = new HttpEntity<>(headers);
         return restTemplate.exchange(RiotUri_getLeagueEntries, HttpMethod.GET, entity, LeagueEntryDTO[].class, encryptedSummonerId).getBody();
+    }
+
+    public String[] getMatchList(String puuid){
+        final HttpHeaders headers = new HttpHeaders();
+        headers.set("X-Riot-Token", riotApiConfig.getRIOT_API_KEY());
+        final HttpEntity<String> entity = new HttpEntity<>(headers);
+        return restTemplate.exchange(RiotUri_getMatchList, HttpMethod.GET, entity, String[].class, puuid).getBody();
     }
 
 }
