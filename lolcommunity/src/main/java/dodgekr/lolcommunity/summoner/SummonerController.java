@@ -26,7 +26,6 @@ public class SummonerController {
         List<MatchDto.ParticipantDto> playerRecords= summonerService.getPlayerRecords(matchList, summonerDTO);
 
         model.addAttribute("summonerInfo", summonerDTO);
-        model.addAttribute("profileUrl", "http://ddragon.leagueoflegends.com/cdn/13.24.1/img/profileicon/"+ summonerDTO.getProfileIconId() + ".png");
         model.addAttribute("entryInfo", leagueEntryDTO[0]);
         model.addAttribute("playerRecords", playerRecords);
         return "summoner_detail";
