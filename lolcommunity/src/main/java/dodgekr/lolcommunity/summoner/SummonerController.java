@@ -31,11 +31,6 @@ public class SummonerController {
         model.addAttribute("entryInfo", leagueEntryDTO[0]);
 //        model.addAttribute("matchList", matchList);
 
-        System.out.println("summonerDTO = " + summonerDTO);
-        System.out.println("leagueEntryDTO = " + leagueEntryDTO);
-        System.out.println("matchList = " + matchList[0]);
-        System.out.println("matchDto = " + matchDto);
-
         MatchDto.ParticipantDto desirePlayer = new MatchDto.ParticipantDto();
 
         List<MatchDto.ParticipantDto> participants = matchDto.getInfo().getParticipants();
