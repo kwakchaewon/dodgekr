@@ -1,6 +1,8 @@
 package dodgekr.lolcommunity.summoner;
 
+import dodgekr.lolcommunity.summoner.domain.CustomMatchDto;
 import dodgekr.lolcommunity.summoner.domain.LeagueEntryDTO;
+import dodgekr.lolcommunity.summoner.domain.MatchDto;
 import dodgekr.lolcommunity.summoner.domain.SummonerDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,9 +30,12 @@ public class SummonerService {
     }
 
     @Transactional(readOnly = true)
-    public String[] findMatch(String puuid){
+    public String[] findMatchList(String puuid){
         return riotApi.getMatchList(puuid);
     }
 
-
+    @Transactional(readOnly = true)
+    public MatchDto findMatch(String matchId){
+        return riotApi.getMatch(matchId);
+    }
 }
