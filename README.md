@@ -8,7 +8,7 @@ Riot API 기반 전적 검색, 커뮤니티 등의 기능을 제공합니다.<br
 
 ### **Backend**
 - Java, Spring boot, Spring security
-- 리그오브레전드 API ([링크])(https://developer.riotgames.com/))
+- 리그오브레전드 API ([링크](https://developer.riotgames.com/))
 
 ### **Infra**
 - Server: AWS EC2
