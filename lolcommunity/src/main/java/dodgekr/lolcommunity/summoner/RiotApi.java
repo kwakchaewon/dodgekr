@@ -66,4 +66,4 @@ public class RiotApi {
         final HttpEntity<String> entity = new HttpEntity<>(headers);
         return restTemplate.exchange(RiotUri_getMatch, HttpMethod.GET, entity, MatchDto.class, matchId).getBody();
     }
-    }
+}
