@@ -1,6 +1,5 @@
 package dodgekr.lolcommunity.summoner;
 
-import dodgekr.lolcommunity.summoner.domain.CustomMatchDto;
 import dodgekr.lolcommunity.summoner.domain.LeagueEntryDTO;
 import dodgekr.lolcommunity.summoner.domain.MatchDto;
 import dodgekr.lolcommunity.summoner.domain.SummonerDTO;
