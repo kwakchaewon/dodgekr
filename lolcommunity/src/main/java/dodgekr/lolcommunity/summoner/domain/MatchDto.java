@@ -2,6 +2,7 @@ package dodgekr.lolcommunity.summoner.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
 
 import java.util.List;
@@ -19,8 +20,7 @@ public class MatchDto {
         private List<ParticipantDto> participants;
     }
 
-    @Getter
-    @Setter
+    @Getter @Setter
     public static class ParticipantDto{
         @JsonProperty("win")
         boolean win;
@@ -43,8 +43,14 @@ public class MatchDto {
         @JsonProperty("championId")
         String championId;
 
-        @JsonProperty("championName")
-        String championName;
-    }
+//        @JsonProperty("championName")
+//        String championName;
 
+        @JsonProperty("championName")
+        String championImg;
+
+        public void setChampionImg(String championImg) {
+            this.championImg = "http://ddragon.leagueoflegends.com/cdn/13.24.1/img/champion/" + championImg + ".png";
+        }
+    }
 }
