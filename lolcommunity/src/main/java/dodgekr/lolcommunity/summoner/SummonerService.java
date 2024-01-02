@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,8 +41,10 @@ public class SummonerService {
         return riotApi.getMatch(matchId);
     }
 
-    public MatchDto.ParticipantDto getPlayerRecord(MatchDto matchDto, SummonerDTO summonerDTO){
+    public MatchDto.ParticipantDto getPlayerRecord(String matchId, SummonerDTO summonerDTO){
         MatchDto.ParticipantDto playerRecord = new MatchDto.ParticipantDto();
+
+        MatchDto matchDto = this.findMatch(matchId);
         List<MatchDto.ParticipantDto> participants = matchDto.getInfo().getParticipants();
 
         for(MatchDto.ParticipantDto p: participants){
@@ -50,5 +53,25 @@ public class SummonerService {
             }
         }
         return playerRecord;
+    }
+
+    public List<MatchDto.ParticipantDto> getPlayerRecords(String[] matchIds, SummonerDTO summonerDTO){
+        List<MatchDto.ParticipantDto> playerRecoreds = new ArrayList<>();
+
+        for(String matchId : matchIds){
+            MatchDto.ParticipantDto playerRecord = new MatchDto.ParticipantDto();
+
+            MatchDto matchDto = this.findMatch(matchId);
+            List<MatchDto.ParticipantDto> participants = matchDto.getInfo().getParticipants();
+
+            for(MatchDto.ParticipantDto p: participants){
+                if(p.getPuuid().equals(summonerDTO.getPuuid())){
+                    playerRecord = p;
+                    break;
+                }
+            }
+            playerRecoreds.add(playerRecord);
+        }
+        return playerRecoreds;
     }
 }
