@@ -44,10 +44,16 @@ Riot API 기반 전적 검색, 커뮤니티 등의 기능을 제공합니다.<br
 - [게시글 삭제](https://little-bit-cf9.notion.site/4-e692fcb69a53405ca100d0469284232a?pvs=4)
 - [게시글 수정](https://little-bit-cf9.notion.site/5-159cf62dbce54dc1bdcbd83ee9c4e066?pvs=4)
 - [게시글 검색](https://little-bit-cf9.notion.site/6-127f00c6ee084c9696e0b8af8b368e98?pvs=4)
-### ✅ 5. 전적검색 개발
+### ✅ 5. 전적 검색 개발
 - [라이엇 API 분석](https://ksh03003.tistory.com/89)
 - [전적검색 구현](https://ksh03003.tistory.com/90)
 
 ### ✅ 6. 배포
 - [스프링부트 jar 배포 (EC2, RDS)](https://ksh03003.tistory.com/86)
+### ✅ 7. 댓글 시스템 개발 (TODO)
+### ✅ 8. 추천 시스템 개발 (TODO)
+### ✅ 9. 젠킨슨 기반 CI/CD 적용(TODO)
+### ✅ 10. 게시판 DB 인덱싱 적용 (TODO)
+### ✅ 11. 전적 검색시 DB 캐싱 적용 (TODO)
+
 
