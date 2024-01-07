@@ -28,7 +28,7 @@ public class SummonerController {
         model.addAttribute("summonerInfo", summonerDTO);
         model.addAttribute("entryInfo", leagueEntryDTO[0]);
         model.addAttribute("playerRecords", playerRecords);
-        return "summoner_detail";
+       return "summoner_detail";
     }
 
 }

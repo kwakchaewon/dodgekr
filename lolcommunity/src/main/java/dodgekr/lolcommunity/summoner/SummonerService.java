@@ -41,19 +41,19 @@ public class SummonerService {
         return riotApi.getMatch(matchId);
     }
 
-    public MatchDto.ParticipantDto getPlayerRecord(String matchId, SummonerDTO summonerDTO){
-        MatchDto.ParticipantDto playerRecord = new MatchDto.ParticipantDto();
-
-        MatchDto matchDto = this.findMatch(matchId);
-        List<MatchDto.ParticipantDto> participants = matchDto.getInfo().getParticipants();
-
-        for(MatchDto.ParticipantDto p: participants){
-            if(p.getPuuid().equals(summonerDTO.getPuuid())){
-                playerRecord = p;
-            }
-        }
-        return playerRecord;
-    }
+//    public MatchDto.ParticipantDto getPlayerRecord(String matchId, SummonerDTO summonerDTO){
+//        MatchDto.ParticipantDto playerRecord = new MatchDto.ParticipantDto();
+//
+//        MatchDto matchDto = this.findMatch(matchId);
+//        List<MatchDto.ParticipantDto> participants = matchDto.getInfo().getParticipants();
+//
+//        for(MatchDto.ParticipantDto p: participants){
+//            if(p.getPuuid().equals(summonerDTO.getPuuid())){
+//                playerRecord = p;
+//            }
+//        }
+//        return playerRecord;
+//    }
 
     public List<MatchDto.ParticipantDto> getPlayerRecords(String[] matchIds, SummonerDTO summonerDTO){
         List<MatchDto.ParticipantDto> playerRecoreds = new ArrayList<>();
