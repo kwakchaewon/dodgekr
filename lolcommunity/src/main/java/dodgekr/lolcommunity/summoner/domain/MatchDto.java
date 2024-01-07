@@ -14,7 +14,7 @@ public class MatchDto {
     @JsonProperty("info")
     private InfoDto info;
 
-    @Getter
+    @Getter @Setter
     public static class InfoDto{
         @JsonProperty("participants")
         private List<ParticipantDto> participants;
@@ -27,6 +27,16 @@ public class MatchDto {
 
         public void setGameDuration(int gameDuration) {
             this.gameDuration = String.valueOf(gameDuration/60) + "분 " + String.valueOf(gameDuration%60) + "초" ;
+        }
+
+        public void setGameMode(String gameMode) {
+            if (gameMode.equals("CLASSIC")){
+                this.gameMode = "일반";
+            } else if (gameMode.equals("ARAM")) {
+                this.gameMode = "무작위 총력전";
+            } else {
+                this.gameMode = "기타";
+            }
         }
     }
 

@@ -2,13 +2,16 @@ package dodgekr.lolcommunity.summoner;
 
 import dodgekr.lolcommunity.summoner.domain.LeagueEntryDTO;
 import dodgekr.lolcommunity.summoner.domain.MatchDto;
+import dodgekr.lolcommunity.summoner.domain.OwnMatchDto;
 import dodgekr.lolcommunity.summoner.domain.SummonerDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 서비스 네이밍 원칙
@@ -63,5 +66,27 @@ public class SummonerService {
             playerRecoreds.add(playerRecord);
         }
         return playerRecoreds;
+    }
+
+    public List<OwnMatchDto> getOwnMatchDtoList(String[] matchIds, SummonerDTO summonerDTO){
+        List<OwnMatchDto> ownMatchDtoList = new ArrayList<>();
+
+        for (String matchId : matchIds){
+            OwnMatchDto ownMatchDto = new OwnMatchDto();
+            MatchDto matchDto = this.findMatch(matchId);
+
+            ownMatchDto.setGameDuration(matchDto.getInfo().getGameDuration());
+            ownMatchDto.setGameMode(matchDto.getInfo().getGameMode());
+
+            List<MatchDto.ParticipantDto> participants = matchDto.getInfo().getParticipants();
+            for(MatchDto.ParticipantDto p: participants){
+                if(p.getPuuid().equals(summonerDTO.getPuuid())){
+                    ownMatchDto.setParticipantDto(p);
+                    break;
+                }
+            }
+        ownMatchDtoList.add(ownMatchDto);
+        }
+    return ownMatchDtoList;
     }
 }

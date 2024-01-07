@@ -39,10 +39,12 @@
     <div class="card" style="padding: 5px;">
         <table>
             <tbody style="border-radius: 15px;">
-            <tr th:each="match, loop : ${playerRecords}" th:style="${match.win} == false ? 'background: #FFD8D9; border-radius: 15px;'  : 'background: #D5E3FF; border-radius: 15px;' ">
-                <td><img th:src="${match.championImg}" class="img-fluid" style="width: 70px; border-radius: 15px; margin:10px"></td>
-                <td th:text="${match.win} ? '승리': '패배'"></td>
-                <td th:text="|${match.kills} / ${match.deaths} / ${match.assists}|"></td>
+            <tr th:each="match, loop : ${playerRecords}" th:style="${match.participantDto.win} == false ? 'background: #FFD8D9; border-radius: 15px;'  : 'background: #D5E3FF; border-radius: 15px;' ">
+                <td><img th:src="${match.participantDto.championImg}" class="img-fluid" style="width: 70px; border-radius: 15px; margin:10px"></td>
+                <td th:text="${match.participantDto.win} ? '승리': '패배'"></td>
+                <td th:text="${match.gameMode}"></td>
+                <td th:text="${match.gameDuration}"></td>
+                <td th:text="|${match.participantDto.kills} / ${match.participantDto.deaths} / ${match.participantDto.assists}|"></td>
             </tr>
             </tbody>
         </table>

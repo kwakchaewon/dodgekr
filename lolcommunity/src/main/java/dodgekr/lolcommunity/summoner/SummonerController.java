@@ -2,6 +2,7 @@ package dodgekr.lolcommunity.summoner;
 
 import dodgekr.lolcommunity.summoner.domain.LeagueEntryDTO;
 import dodgekr.lolcommunity.summoner.domain.MatchDto;
+import dodgekr.lolcommunity.summoner.domain.OwnMatchDto;
 import dodgekr.lolcommunity.summoner.domain.SummonerDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -24,11 +25,13 @@ public class SummonerController {
         LeagueEntryDTO[] leagueEntryDTO = summonerService.findLeagueEntry(summonerDTO.getId());
         String[] matchList = summonerService.findMatchList(summonerDTO.getPuuid());
         List<MatchDto.ParticipantDto> playerRecords= summonerService.getPlayerRecords(matchList, summonerDTO);
-        MatchDto.InfoDto matchDto = summonerService.getInfoDto(matchList[0]);
+//        MatchDto.InfoDto matchDto = summonerService.getInfoDto(matchList[0]);
+        List<OwnMatchDto> ownMatchDtoList = summonerService.getOwnMatchDtoList(matchList, summonerDTO);
 
         model.addAttribute("summonerInfo", summonerDTO);
         model.addAttribute("entryInfo", leagueEntryDTO[0]);
-        model.addAttribute("playerRecords", playerRecords);
+//        model.addAttribute("playerRecords", playerRecords);
+        model.addAttribute("playerRecords", ownMatchDtoList);
 
        return "summoner_detail";
     }

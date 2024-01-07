@@ -13,6 +13,8 @@ import org.springframework.web.client.RestTemplate;
 
 import org.springframework.http.HttpHeaders;
 
+import java.util.Map;
+
 /**
  * RiotApi 함수 작성 원칙
  * 반환 타입: Return value
