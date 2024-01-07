@@ -41,6 +41,10 @@ public class SummonerService {
         return riotApi.getMatch(matchId);
     }
 
+    public MatchDto.InfoDto getInfoDto(String matchId){
+        return riotApi.getMatch(matchId).getInfo();
+    }
+
 //    public MatchDto.ParticipantDto getPlayerRecord(String matchId, SummonerDTO summonerDTO){
 //        MatchDto.ParticipantDto playerRecord = new MatchDto.ParticipantDto();
 //

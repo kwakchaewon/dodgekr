@@ -24,10 +24,12 @@ public class SummonerController {
         LeagueEntryDTO[] leagueEntryDTO = summonerService.findLeagueEntry(summonerDTO.getId());
         String[] matchList = summonerService.findMatchList(summonerDTO.getPuuid());
         List<MatchDto.ParticipantDto> playerRecords= summonerService.getPlayerRecords(matchList, summonerDTO);
+        MatchDto.InfoDto matchDto = summonerService.getInfoDto(matchList[0]);
 
         model.addAttribute("summonerInfo", summonerDTO);
         model.addAttribute("entryInfo", leagueEntryDTO[0]);
         model.addAttribute("playerRecords", playerRecords);
+        
        return "summoner_detail";
     }
 

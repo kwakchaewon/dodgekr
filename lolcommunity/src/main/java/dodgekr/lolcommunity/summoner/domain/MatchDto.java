@@ -18,6 +18,16 @@ public class MatchDto {
     public static class InfoDto{
         @JsonProperty("participants")
         private List<ParticipantDto> participants;
+
+        @JsonProperty("gameDuration") // 게임 시간(초)
+        private String gameDuration;
+
+        @JsonProperty("gameMode") // CLASSIC: 일반, ARAM: 무작위 총력전
+        private String gameMode;
+
+        public void setGameDuration(int gameDuration) {
+            this.gameDuration = String.valueOf(gameDuration/60) + "분 " + String.valueOf(gameDuration%60) + "초" ;
+        }
     }
 
     @Getter @Setter
