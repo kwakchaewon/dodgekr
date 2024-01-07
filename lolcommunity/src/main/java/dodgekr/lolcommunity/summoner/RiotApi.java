@@ -13,8 +13,6 @@ import org.springframework.web.client.RestTemplate;
 
 import org.springframework.http.HttpHeaders;
 
-import java.util.Map;
-
 /**
  * RiotApi 함수 작성 원칙
  * 반환 타입: Return value
@@ -31,7 +29,7 @@ public class RiotApi {
     private final RiotApiConfig riotApiConfig;
     private final String RiotUri_getSummoner = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonerName}";
     private final String RiotUri_getLeagueEntries = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/{encryptedSummonerId}";
-    private final String RiotUri_getMatchList = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?start=0&count=5";
+    private final String RiotUri_getMatchList = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?start=0&count=10";
     private final String RiotUri_getMatch = "https://asia.api.riotgames.com/lol/match/v5/matches/{matchId}";
 
 
