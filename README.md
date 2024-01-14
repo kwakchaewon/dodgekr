@@ -34,7 +34,7 @@ Riot API 기반 전적 검색, 커뮤니티 등의 기능을 제공합니다.<br
 - [프로젝트 생성](https://little-bit-cf9.notion.site/1-1bbe1609025a423aa2f014eaa36e1526?pvs=4)
 - [프로젝트 설정](https://little-bit-cf9.notion.site/3-360bddba4ba54a10b96ee6b90e6e5d9a?pvs=4)
 - [MYSQL 연동](https://little-bit-cf9.notion.site/4-MYSQL-bb046eda6e4f40dd8d3ff4f696bb1737?pvs=4)
-### ✅ 3. 회원 도메인 개발
+### ✅ 3. 세션 기반 Spring security 적용
 - [회원가입](https://little-bit-cf9.notion.site/1-ccb09ca9d02a4d95b72532dd1d5a49d3?pvs=4)
 - [로그인/로그아웃](https://little-bit-cf9.notion.site/2-d8f3fab6b7084eb1ae7be61e3d3a06eb?pvs=4)
 ### ✅ 4. 자유 게시판 개발
